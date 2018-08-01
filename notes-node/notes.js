@@ -6,8 +6,9 @@ const fs = require('fs');
 const fetchNotes = () => {
     // use try incase of the first time when the json file has not been created
     // this would prevent error.
+    let notes;
     try {
-        noteString = fs.readFileSync('notes-data.json');
+        let noteString = fs.readFileSync('notes-data.json');
         notes = JSON.parse(noteString);
     } catch (e) {
         notes = [];
@@ -45,17 +46,18 @@ const removeNode = (title) => {
         filteredNotes = notes.filter(note => note.title !== title);
         saveNotes(filteredNotes);
         noteLog = "Note was removed";
-    }
+    };
     console.log(noteLog);
 };
+
 // const multiplyAll = (...args) => {
 //     let result = args.reduce((acc, val) => acc * val);
 //     return result;
-// }
+// };
 
 module.exports = {
     addNote,
     getAll,
     getNode,
     removeNode
-}
+};
