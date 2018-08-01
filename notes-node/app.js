@@ -9,6 +9,8 @@ console.log(notes.multiplyAll(1, 2, 3, 5, 11, 34, 3));
 duplicateArray = ['tt',2, 5, 5, 4, "Oyelowo", "oyelowo", "Oyelowo", 345, 2, 8, 5];
 console.log(_.uniq(duplicateArray));
 
+console.log(_.isString(duplicateArray));
+console.log(_.isString("duplicateArray"));
 // username = os.userInfo().username;
 // console.log(username);
 
