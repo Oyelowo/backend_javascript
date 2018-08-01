@@ -37,7 +37,15 @@ const addNote = (title, body) => {
 
 const getAll = () => console.log("listing all nodes");
 
-const getNode = (title) => console.log('getting node', title);
+const getNode = (title) => {
+    let notes = fetchNotes();
+    let filteredNotes = notes.filter(note => note.title === title);
+    console.log(filteredNotes);
+    let noteFoundMessage = filteredNotes.length > 0 ? 'The note was found' : 'Note not found';
+    console.log(noteFoundMessage);
+    return filteredNotes;
+
+};
 
 const removeNode = (title) => {
     let notes = fetchNotes();
