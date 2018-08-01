@@ -38,7 +38,11 @@ const getAll = () => console.log("listing all nodes");
 
 const getNode = (title) => console.log('getting node', title);
 
-const removeNode = (title) => console.log('removing node', title);
+const removeNode = (title) => {
+    let notes = fetchNotes();
+    filteredNotes = notes.filter(note => note.title !== title);
+    return saveNotes(filteredNotes);
+};
 // const multiplyAll = (...args) => {
 //     let result = args.reduce((acc, val) => acc * val);
 //     return result;
