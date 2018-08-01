@@ -4,13 +4,13 @@ const yargs = require('yargs');
 
 const notes = require('./notes.js');
 
-command = process.argv[2];
-console.log('command:', command);
+// command = process.argv[2];
+// console.log('command:', command);
 
 argv = yargs.argv;
 console.log('yargs', argv)
 
-console.log(process.argv);
+const command = argv._[0];
 
 switch (command) {
     case 'add':
