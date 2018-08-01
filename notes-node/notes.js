@@ -1,9 +1,28 @@
 console.log('starting notes.js');
+const fs = require('fs');
 
 // console.log(module);
 
 const addNote = (title, body) => {
-    console.log('adding note', title, body);
+    let notes = [];
+    let note = {
+        title,
+        body
+    };
+
+    // use try incase of the first time when the json file has not been created
+    // this would prevent error.
+    try {
+        noteString = fs.readFileSync('notes-data.json');
+        notes = JSON.parse(noteString);
+    } catch (e) {}
+
+    if (!notes.find(note => note.title === title)) {
+        notes.push(note);
+        fs.writeFileSync("notes-data.json", JSON.stringify(notes))
+    } else {
+        console.log("NOTE ALREADY EXIST");
+    }
 }
 
 const getAll = () => console.log("listing all nodes");
