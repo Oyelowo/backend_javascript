@@ -12,6 +12,7 @@
   "author": "Oyelowo Oyedayo",
   "license": "MIT",
   "dependencies": {
-    "lodash": "^4.17.10"
+    "lodash": "^4.17.10",
+    "yargs": "^4.7.1"
   }
 }
