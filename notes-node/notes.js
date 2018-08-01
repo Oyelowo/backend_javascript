@@ -40,8 +40,13 @@ const getNode = (title) => console.log('getting node', title);
 
 const removeNode = (title) => {
     let notes = fetchNotes();
-    filteredNotes = notes.filter(note => note.title !== title);
-    return saveNotes(filteredNotes);
+    let noteLog = "Note was not removed";
+    if (notes.find(note => note.title === title)) {
+        filteredNotes = notes.filter(note => note.title !== title);
+        saveNotes(filteredNotes);
+        noteLog = "Note was removed";
+    }
+    console.log(noteLog);
 };
 // const multiplyAll = (...args) => {
 //     let result = args.reduce((acc, val) => acc * val);
