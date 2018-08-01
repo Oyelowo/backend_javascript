@@ -14,17 +14,16 @@ console.log(process.argv);
 
 switch (command) {
     case 'add':
-        console.log('adding new notes');
         notes.addNote(argv.title, argv.body);
         break;
     case 'list':
-        console.log('listing notes');
+        notes.getAll();
         break;
     case 'read':
-        console.log('reading notes');
+        notes.getNode(argv.title);
         break;
     case 'remove':
-        console.log('Removed notes');
+        notes.removeNode(argv.title);
         break;
     default:
         console.log('command not recognised');
