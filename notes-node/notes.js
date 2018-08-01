@@ -41,7 +41,7 @@ const getNode = (title) => console.log('getting node', title);
 
 const removeNode = (title) => {
     let notes = fetchNotes();
-    let noteLog = "Note was not removed";
+    let noteLog = "Note not found";
     if (notes.find(note => note.title === title)) {
         filteredNotes = notes.filter(note => note.title !== title);
         saveNotes(filteredNotes);
