@@ -3,6 +3,9 @@ let person = {
 }
 
 person.age = 24;
+
+debugger;
+
 person.name = 'Dayo';
 
 console.log(person);
