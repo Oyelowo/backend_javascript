@@ -44,7 +44,6 @@ const getNode = (title) => {
     let noteFoundMessage = filteredNotes.length > 0 ? 'The note was found' : 'Note not found';
     console.log(noteFoundMessage);
     return filteredNotes;
-
 };
 
 const removeNode = (title) => {
