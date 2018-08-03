@@ -4,8 +4,8 @@ const fs = require('fs');
 // console.log(module);
 
 const fetchNotes = () => {
-    // use try incase of the first time when the json file has not been created
-    // this would prevent error.
+    // use try incase of the first time when the json file has not been created this
+    // would prevent error.
     let notes;
     try {
         let noteString = fs.readFileSync('notes-data.json');
@@ -35,17 +35,18 @@ const addNote = (title, body) => {
     }
 }
 
-const getAll = () => console.log("listing all nodes");
+const getAll = () => fetchNotes();
 
 const getNode = (title) => {
     let notes = fetchNotes();
 
     let filteredNotes = notes.filter(note => note.title === title);
-    // Break on this line and use repl to output note
-    // debugger;
-    // use the read command with --title
+    // Break on this line and use repl to output note debugger; use the read command
+    // with --title
     console.log(filteredNotes);
-    let noteFoundMessage = filteredNotes.length > 0 ? 'The note was found' : 'Note not found';
+    let noteFoundMessage = filteredNotes.length > 0
+        ? 'The note was found'
+        : 'Note not found';
     console.log(noteFoundMessage);
     return filteredNotes;
 };
@@ -62,10 +63,8 @@ const removeNode = (title) => {
     console.log(noteLog);
 };
 
-// const multiplyAll = (...args) => {
-//     let result = args.reduce((acc, val) => acc * val);
-//     return result;
-// };
+// const multiplyAll = (...args) => {     let result = args.reduce((acc, val) =>
+// acc * val);     return result; };
 
 module.exports = {
     addNote,

@@ -17,7 +17,7 @@ switch (command) {
         notes.addNote(argv.title, argv.body);
         break;
     case 'list':
-        notes.getAll();
+        console.log(notes.getAll());
         break;
     case 'read':
         notes.getNode(argv.title);
