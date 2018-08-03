@@ -39,7 +39,11 @@ const getAll = () => console.log("listing all nodes");
 
 const getNode = (title) => {
     let notes = fetchNotes();
+
     let filteredNotes = notes.filter(note => note.title === title);
+    // Break on this line and use repl to output note
+    // debugger;
+    // use the read command with --title
     console.log(filteredNotes);
     let noteFoundMessage = filteredNotes.length > 0 ? 'The note was found' : 'Note not found';
     console.log(noteFoundMessage);
@@ -47,6 +51,7 @@ const getNode = (title) => {
 };
 
 const removeNode = (title) => {
+
     let notes = fetchNotes();
     let noteLog = "Note not found";
     if (notes.find(note => note.title === title)) {
