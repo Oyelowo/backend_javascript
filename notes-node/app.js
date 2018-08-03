@@ -17,7 +17,11 @@ switch (command) {
         notes.addNote(argv.title, argv.body);
         break;
     case 'list':
-        console.log(notes.getAll());
+        let allNotes = notes.getAll();
+        console.log(`There are ${allNotes.length} note(s)`);
+        allNotes.forEach((note) => {
+            console.log(`Title: ${note.title}\n Body: ${note.body}`);
+        })
         break;
     case 'read':
         notes.getNode(argv.title);
