@@ -1,3 +1,3 @@
-let square =(x)=> x*x;
+let square = x => x * x;
 
 console.log(square(9))
