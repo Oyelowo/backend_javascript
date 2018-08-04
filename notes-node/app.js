@@ -26,7 +26,10 @@ argv = yargs
     })
     .command('list', 'List all notes')
     .command('read', 'Reads a note', {
-
+        title: titleOptions
+    })
+    .command('remove', 'Removes note', {
+        title: titleOptions
     })
     .help()
     .argv;
