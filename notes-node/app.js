@@ -7,13 +7,13 @@ const notes = require('./notes.js');
 // command = process.argv[2];
 // console.log('command:', command);
 
-let titleOptions = {
+const titleOptions = {
     describe: 'Title of note',
     demand: true,
     alias: 't'
 };
 
-let bodyOptions = {
+const bodyOptions = {
     describe: 'This is the body of the note',
     demand: true,
     alias: 'b'
