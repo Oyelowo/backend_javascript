@@ -11,7 +11,7 @@ argv = yargs
 .command('add','Adds a new note', {
     title: {
         describe: 'Title of note',
-        demand: false,
+        demand: true,
         alias: 't'
     },
     body: {
