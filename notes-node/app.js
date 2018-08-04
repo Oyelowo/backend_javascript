@@ -7,21 +7,29 @@ const notes = require('./notes.js');
 // command = process.argv[2];
 // console.log('command:', command);
 
+let titleOptions = {
+    describe: 'Title of note',
+    demand: true,
+    alias: 't'
+};
+
+let bodyOptions = {
+    describe: 'This is the body of the note',
+    demand: true,
+    alias: 'b'
+}
+
 argv = yargs
-.command('add','Adds a new note', {
-    title: {
-        describe: 'Title of note',
-        demand: true,
-        alias: 't'
-    },
-    body: {
-        describe: 'This is the body of the note',
-        demand: true,
-        alias: 'b'
-    }
-})
-.help()
-.argv;
+    .command('add', 'Adds a new note', {
+        title: titleOptions,
+        body: bodyOptions
+    })
+    .command('list', 'List all notes')
+    .command('read', 'Reads a note', {
+
+    })
+    .help()
+    .argv;
 // console.log('yargs', argv)
 
 const command = argv._[0];
