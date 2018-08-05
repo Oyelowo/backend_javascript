@@ -4,11 +4,11 @@ console.log(square(9));
 
 let student = {
     name: 'Oyelowo',
-    sayHello(){
+    sayHello() {
         console.log(arguments);
         console.log(`Hello, I am ${this.name}`);
     }
 };
 
 
-student.sayHello(1,2,3,"vc");
+student.sayHello(1, 2, 3, "vc");
