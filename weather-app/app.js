@@ -23,7 +23,14 @@ request({
     url: `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=AIzaSyAr1xwsViJwAjAwTEMIjxbCRjdg-6LkEdw`,
     json: true
 }, (error, response, body) => {
-    // console.log(JSON.stringify(body, undefined, 4));
-    // console.log(body.results[0].formatted_address);
-    console.log(` latitude: ${body.results[0].geometry.location.lat} \n longitude: ${body.results[0].geometry.location.lng}`);
+    if (error) {
+        console.log('unable to connect to google servers');
+    } else if (body.status === 'ZERO_RESULTS') {
+        console.log('unable to find the address. Recheck and try again');
+    } else {
+        // console.log(JSON.stringify(body, undefined, 4));
+        console.log(body.results[0].formatted_address);
+        console.log(` latitude: ${body.results[0].geometry.location.lat} \n longitude: ${body.results[0].geometry.location.lng}`);
+    }
+
 });
