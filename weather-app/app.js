@@ -1,5 +1,5 @@
 const yargs = require('yargs');
-const geocode=require('./geocode/geocode');
+const geocode = require('./geocode/geocode');
 
 const argv = yargs.options({
         a: {
@@ -12,5 +12,8 @@ const argv = yargs.options({
     .help()
     .alias('help', 'h')
     .argv;
-geocode.geocodeAddress(argv.a)
+geocode.geocodeAddress(argv.address, (errorMessage, results) => {
+    let message = errorMessage ? errorMessage : JSON.stringify(results, null, 2);
+    console.log(message);
+})
 // console.log(argv);
