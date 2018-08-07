@@ -21,26 +21,13 @@
 
 
 const yargs = require('yargs');
-// const getWeather = require('./getWeather/getWeather');
+const getWeather = require('./getWeather/getWeather');
 const request = require('request');
 
-request({
-    url: `https://api.darksky.net/forecast/be243b78b4c7c873806b3726863d5ee3/60.2413032,25.0710316`,
-    json: true
-}, (error, response, body) => {
-    if (!error && response.statusCode === 200) {
-        console.log(body.currently.temperature);
-    } else {
-        console.log('unable to fetch weather')
-    }
-})
-
-
-
 // const argv = yargs.options({
-//         t: {
+//         lat: {
 //             demand: true,
-//             alias: 'temperature',
+//             alias: 'latitude',
 //             describe: 'temperature of address for which weather is to be fetched',
 //             string: true
 //         }
@@ -49,7 +36,7 @@ request({
 //     .alias('help', 'h')
 //     .argv;
 
-// getWeather.getWeather(argv.t, (errorMessage, results) => {
-//     let message = errorMessage ? errorMessage : JSON.stringify(results, null, 2);
-//     console.log(message);
-// })
+getWeather.getWeather(60.2413032,25.0710316, (errorMessage, results) => {
+    let message = errorMessage ? errorMessage : JSON.stringify(results, null, 2);
+    console.log(message);
+})
