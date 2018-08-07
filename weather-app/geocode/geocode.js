@@ -4,10 +4,6 @@ const request = require('request');
 // be243b78b4c7c873806b3726863d5ee3
 // https://api.darksky.net/forecast/be243b78b4c7c873806b3726863d5ee3/37.8267,-122.4233
 const geocodeAddress = (address, callback) => {
-    // both below would work
-    // let encodedAddress = encodeURIComponent(argv.a);
-    // let encodedAddress = encodeURIComponent(argv.address);
-
     let encodedAddress = encodeURIComponent(address)
     request({
         url: `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=AIzaSyAr1xwsViJwAjAwTEMIjxbCRjdg-6LkEdw`,
