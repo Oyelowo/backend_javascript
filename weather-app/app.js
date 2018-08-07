@@ -18,13 +18,15 @@ geocode.geocodeAddress(argv.address, (errorMessage, results) => {
     if (errorMessage) {
         console.log(errorMessage);
     } else {
-        getWeather.getWeather(results.latitude, results.longitude, (errorMessage, results) => {
-            let message = errorMessage ? errorMessage : JSON.stringify(results, null, 2);
-            console.log(message);
+        getWeather.getWeather(results.latitude, results.longitude, (errorMessage, weatherResults) => {
+            if (errorMessage) {
+                console.log(errorMessage);
+            } else {
+                console.log(`The Temperature in ${results.address} is presently ${weatherResults.temperature} and feels ${weatherResults.apparentTemperature}`)
+            }
         })
     }
     // let message = errorMessage ? errorMessage : JSON.stringify(results, null, 2);
     // console.log(message);
 })
 // console.log(argv);
-
