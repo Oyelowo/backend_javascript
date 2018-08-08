@@ -10,4 +10,14 @@ app.get('/', (req, res) => {
     })
 });
 
+app.get('/about', (req, res) => {
+    res.send('About Oyelowo');
+});
+
+app.get('/bad', (req, res) => {
+    res.send({
+        errorMessage: 'unable to fulfill the request'
+    })
+});
+
 app.listen(3000);
