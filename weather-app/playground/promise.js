@@ -10,16 +10,16 @@ let asyncAdd = (a, b) => {
     })
 }
 
-asyncAdd(24, 22).then((res) => {
-    console.log(res)
+asyncAdd(24, '22').then((res) => {
+    console.log('First promise result', res)
     return asyncAdd(res, 33)
 }, (errorMessage) => {
     console.log(errorMessage);
 }).then((res) => {
-    console.log(res)
+    console.log('New Chained promise has a result of', res)
 }, (error) => {
     console.log(error)
-}) 
+})
 
 // let myPromise = new Promise((resolve, reject) => {
 //     setTimeout(() => {
