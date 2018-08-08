@@ -10,13 +10,17 @@ let asyncAdd = (a, b) => {
     })
 }
 
-let myPromise = new Promise((resolve, reject) => {
-    setTimeout(() => {
-        resolve('Hey Oyelowo!, it worked!');
-        reject('I\'m sorry, can\'t fulfill that promise');
-    }, 3000)
-});
+asyncAdd(24, 22).then((res) => console.log(res), (errorMessage) => {
+    console.log(errorMessage);
+})
 
-myPromise.then((message) => console.log(message), (errorMessage) => {
-    console.log("Error:", errorMessage);
-});
+// let myPromise = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//         resolve('Hey Oyelowo!, it worked!');
+//         reject('I\'m sorry, can\'t fulfill that promise');
+//     }, 3000)
+// });
+
+// myPromise.then((message) => console.log(message), (errorMessage) => {
+//     console.log("Error:", errorMessage);
+// });
