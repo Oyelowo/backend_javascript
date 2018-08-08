@@ -7,7 +7,6 @@ let geocodeAddress = (address) => {
             url: `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=AIzaSyAr1xwsViJwAjAwTEMIjxbCRjdg-6LkEdw`,
             json: true
         }, (error, response, body) => {
-
             if (error) {
                 reject('unable to connect to google servers');
             } else if (body.status === 'ZERO_RESULTS') {
