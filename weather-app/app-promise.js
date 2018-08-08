@@ -14,12 +14,17 @@ const argv = yargs.options({
     .argv;
 
 let encodedAddress = encodeURIComponent(argv.address);
-let geocodeURL = `https://mapsgoogleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=AIzaSyAr1xwsViJwAjAwTEMIjxbCRjdg-6LkEdw`;
+let geocodeURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=AIzaSyAr1xwsViJwAjAwTEMIjxbCRjdg-6LkEdw`;
 
-axios.get(geocodeURL).then((res) => {
-    console.log(res.data)
+axios.get(geocodeURL).then((response) => {
+    if (response.data.status === "ZERO_RESULTS") {
+        throw new Error('unable to find the address');
+    }
+    console.log(response.data)
 }).catch((error) => {
     if (error.code === "ENOTFOUND") {
         console.log("unable to connect to API server");
+    } else {
+        console.log(error.message);
     }
 })
