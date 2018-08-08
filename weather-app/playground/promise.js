@@ -1,5 +1,10 @@
 let myPromise = new Promise((resolve, reject) => {
-    resolve('Hey Oyelowo!, it worked!');
+    setTimeout(() => {
+        resolve('Hey Oyelowo!, it worked!');
+        reject('I\'m sorry, can\'t fulfill that promise');
+    }, 3000)
 });
 
-myPromise.then((message) => console.log(message));
+myPromise.then((message) => console.log(message), (errorMessage) => {
+    console.log("Error:", errorMessage);
+});
