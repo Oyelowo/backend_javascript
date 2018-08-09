@@ -10,9 +10,15 @@ hbs.registerHelper('shoutIt', (text) => text.toUpperCase());
 app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public'));
 
+app.use((req, res, next) => {
+    let now= new Date().toString();
+    console.log(`${now}`)
+    next()
+});
+
 // app.get('/', (req, res) => {     // res.send('<h1>Hello Express!</h1>');
-// res.send({         name: 'Oyelowo',         likes: ['Coding', 'Traveling']
-// }) });
+// res.send({         name: 'Oyelowo',         likes: ['Coding', 'Traveling'] })
+// });
 
 app.get('/', (req, res) => {
     res.render('home.hbs', {
