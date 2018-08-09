@@ -4,38 +4,30 @@ const hbs = require('hbs');
 let app = express();
 
 hbs.registerPartials(__dirname + '/views/partials')
+hbs.registerHelper('getCurrentYear', () => new Date().getFullYear());
+
 app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public'));
 
-// app.get('/', (req, res) => {
-//     // res.send('<h1>Hello Express!</h1>');
-//     res.send({
-//         name: 'Oyelowo',
-//         likes: ['Coding', 'Traveling']
-//     })
-// });
+// app.get('/', (req, res) => {     // res.send('<h1>Hello Express!</h1>');
+// res.send({         name: 'Oyelowo',         likes: ['Coding', 'Traveling']
+//  }) });
 
 app.get('/', (req, res) => {
     res.render('home.hbs', {
         pageTitle: 'Oyelowo\'s Home Page',
-        welcomeMessage: 'Welcome to my code cave',
-        currentYear: new Date().getFullYear()
+        welcomeMessage: 'Welcome to my code cave'
     })
 })
 
 app.get('/about', (req, res) => {
     res.render('about.hbs', {
-        pageTitle: 'About Page',
-        currentYear: new Date().getFullYear()
+        pageTitle: 'About Page'
     })
 });
 
-
-
 app.get('/bad', (req, res) => {
-    res.send({
-        errorMessage: 'unable to fulfill the request'
-    })
+    res.send({errorMessage: 'unable to fulfill the request'})
 });
 
 app.listen(3000, () => {
