@@ -5,6 +5,7 @@ const fs = require('fs');
 const port = process.env.PORT || 3000;
 let app = express();
 
+
 hbs.registerPartials(__dirname + '/views/partials')
 hbs.registerHelper('getCurrentYear', () => new Date().getFullYear());
 hbs.registerHelper('shoutIt', (text) => text.toUpperCase());
@@ -28,13 +29,9 @@ app.use((req, res, next) => {
 
 app.use(express.static(__dirname + '/public'));
 
-// app.get('/', (req, res) => { //
-//     res.send('<h1>Hello Express!</h1>');
-//     res.send({
-//         name: 'Oyelowo',
-//         likes: ['Coding', 'Traveling']
-//     });
-// });
+// app.get('/', (req, res) => { //     res.send('<h1>Hello Express!</h1>');
+// res.send({         name: 'Oyelowo',         likes: ['Coding', 'Traveling']
+//  }); });
 
 app.get('/', (req, res) => {
     res.render('home.hbs', {
@@ -51,4 +48,6 @@ app.get('/bad', (req, res) => {
     res.send({errorMessage: 'unable to fulfill the request'})
 });
 
-app.listen(port, () => console.log(`server is up on port ${port}`));
+app.listen(port, () => {
+    console.log(`server is up on port ${port}`);
+});
