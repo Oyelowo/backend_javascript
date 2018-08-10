@@ -5,7 +5,6 @@ const fs = require('fs');
 const port = process.env.PORT || 3000;
 let app = express();
 
-
 hbs.registerPartials(__dirname + '/views/partials')
 hbs.registerHelper('getCurrentYear', () => new Date().getFullYear());
 hbs.registerHelper('shoutIt', (text) => text.toUpperCase());
@@ -31,7 +30,7 @@ app.use(express.static(__dirname + '/public'));
 
 // app.get('/', (req, res) => { //     res.send('<h1>Hello Express!</h1>');
 // res.send({         name: 'Oyelowo',         likes: ['Coding', 'Traveling']
-//  }); });
+// }); });
 
 app.get('/', (req, res) => {
     res.render('home.hbs', {
@@ -41,7 +40,11 @@ app.get('/', (req, res) => {
 })
 
 app.get('/about', (req, res) => {
-    res.render('about.hbs', {pageTitle: 'About Page'})
+    res.render('about.hbs', {pageTitle: 'About Page'});
+});
+
+app.get('/projects', (req, res) => {
+    res.render('project.hbs', {pageTitle: 'Projects'});
 });
 
 app.get('/bad', (req, res) => {
