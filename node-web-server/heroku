@@ -2,9 +2,3 @@ heroku --help
 heroku login
 heroku keys:add
 ssh -v git@heroku.com
-heroku open
-git commit -m "set up start script and heroku port"
-git push origin
-heroku create
-git push heroku
-heroku open
