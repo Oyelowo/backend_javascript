@@ -11,7 +11,8 @@ it('should add two numbers', () => {
 
 it('should square a number', () => {
     let res = utils.square(5);
-    if (res !== 25) {
-        throw new Error(`Expected 25 but got ${res}`);
-    }
+    expect(res).toBe(25).toBeA('number')
+    // if (res !== 25) {
+    //     throw new Error(`Expected 25 but got ${res}`);
+    // }
 })
