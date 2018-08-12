@@ -11,8 +11,32 @@ it('should add two numbers', () => {
 
 it('should square a number', () => {
     let res = utils.square(5);
-    expect(res).toBe(25).toBeA('number')
+    expect(res).toBe(25).toBeA('number');
     // if (res !== 25) {
     //     throw new Error(`Expected 25 but got ${res}`);
     // }
+})
+
+it("should exprect some values", () => {
+    // expect(12).toNotBe(11);
+    // expect({name:'Oyelowo'}).toEqual({name:'Oyelowo'});
+    // expect({name:'Oyelowo'}).toNotEqual({name:'Oyelow'});
+    // expect([2,3,5]).toInclude(5);
+    // expect([2,3,5]).toExclude(1);
+    expect({
+        name: 'Oyelowo',
+        age: 24,
+        location: 'Finland'
+    }).
+    toInclude({
+        age: 24
+    });
+    expect({
+        name: 'Oyelowo',
+        age: 24,
+        location: 'Finland'
+    }).
+    toExclude({
+        age: 25
+    });
 })
