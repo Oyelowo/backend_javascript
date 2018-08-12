@@ -8,7 +8,7 @@ it('should return Hello World! response', (done) => {
     request(app)
         .get('/')
         .expect(404)
-        .expect({
+        .expect({ 
             error: 'Page not found'
         })
         // .expect('Hello World!')
