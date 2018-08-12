@@ -23,20 +23,25 @@ it("should exprect some values", () => {
     // expect({name:'Oyelowo'}).toNotEqual({name:'Oyelow'});
     // expect([2,3,5]).toInclude(5);
     // expect([2,3,5]).toExclude(1);
-    expect({
-        name: 'Oyelowo',
-        age: 24,
-        location: 'Finland'
-    }).
-    toInclude({
-        age: 24
-    });
-    expect({
-        name: 'Oyelowo',
-        age: 24,
-        location: 'Finland'
-    }).
-    toExclude({
-        age: 25
-    });
+    // expect({
+    //     name: 'Oyelowo',
+    //     age: 24,
+    //     location: 'Finland'
+    // }).
+    // toInclude({
+    //     age: 24
+    // });
+    // expect({
+    //     name: 'Oyelowo',
+    //     age: 24,
+    //     location: 'Finland'
+    // }).
+    // toExclude({
+    //     age: 25
+    // });
+});
+
+it('should be an Object', ()=>{
+    let res=utils.setName({}, 'Oyelowo Oyedayo');
+    expect(res).toBeA('object');
 })
