@@ -41,7 +41,26 @@ it("should exprect some values", () => {
     // });
 });
 
-it('should be an Object', ()=>{
-    let res=utils.setName({}, 'Oyelowo Oyedayo');
+it('should be an Object', () => {
+    let user = {
+        age: 24,
+        location: 'Finland'
+    };
+    let res = utils.setName(user, 'Oyelowo Oyedayo');
     expect(res).toBeA('object');
-})
+    // expect(res.lastName).toNotBeA('undefined');
+});
+
+it('should set firstName, lastName', () => {
+    let user = {
+        age: 24,
+        location: 'Finland'
+    };
+
+    let res = utils.setName(user, 'Oyelowo Oyedayo');
+    expect(res).toInclude({
+        lastName: 'Oyedayo',
+        firstName: 'Oyelowo'
+    });
+
+});
