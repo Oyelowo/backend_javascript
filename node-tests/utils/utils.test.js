@@ -31,7 +31,7 @@ it('should async square a number', (done) => {
     })
 })
 
-it("should exprect some values", () => {
+it("should expect some values", () => {
     // expect(12).toNotBe(11);
     // expect({name:'Oyelowo'}).toEqual({name:'Oyelowo'});
     // expect({name:'Oyelowo'}).toNotEqual({name:'Oyelow'});
