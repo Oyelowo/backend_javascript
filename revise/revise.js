@@ -535,7 +535,7 @@ var BoldmanYaks = {
 // Add subscribers and alert them
 observable = new Observable();
 observable.subscribe(OrganFanny);
-observable.subscribe(BoldmanYaks);
+observable.subscribe(BoldmanYaks); 
 observable.publish('IBM at $145.30');
 
 console.log(observable.unsubscribe(OrganFanny) + " Unsubscribed<br />");
