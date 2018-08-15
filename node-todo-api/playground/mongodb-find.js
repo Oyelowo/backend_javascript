@@ -23,12 +23,19 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, client) => {
     //     console.log('Unable to fetch todos', err);
     // });
 
-    db.collection('Todos').find().count().then((count) => {
-        console.log(`Todos count: ${count}`);
-    }, (err) => {
-        console.log('Unable to fetch todos', err);
-    });
+    // db.collection('Todos').find().count().then((count) => {
+    //     console.log(`Todos count: ${count}`);
+    // }, (err) => {
+    //     console.log('Unable to fetch todos', err);
+    // });
 
+    db.collection('Users').find({
+        name: 'Oyelowo Oyedayo'
+    }).toArray().then((docs) => {
+        console.log(`Users: \n ${JSON.stringify(docs, null, 2)}`);
+    }, (err) => {
+        console.log('Unable to fetch data from Users collection');
+    })
 
     // client.close();
 })
