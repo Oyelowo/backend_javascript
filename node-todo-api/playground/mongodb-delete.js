@@ -11,17 +11,16 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, client) => {
     console.log('connected to Mongodb server');
     const db = client.db('TodoApp');
 
-    // deleteMany
+    // deleteMany db     .collection('Todos')     .deleteMany({text: 'Something to
+    // do'})     .then(docs => console.log(docs)); deleteOne db
+    // .collection('Todos')     .deleteOne({text: 'Read the book'})     .then(docs
+    // => console.log(docs)); findOneDelete
+
     db
         .collection('Todos')
-        .deleteMany({text: 'Something to do'})
-        .then(docs => console.log(docs));
+        .findOneAndDelete({completed: false})
+        .then(result => console.log(result));
 
-    // deleteOne
-    db
-        .collection('Todos')
-        .deleteOne({text: 'Read the book'})
-        .then(docs => console.log(docs));
+    // client.close();
 
-    // findOneDelete client.close();
 })
