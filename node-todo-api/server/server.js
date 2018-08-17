@@ -23,7 +23,7 @@ let Todo = mongoose.model('Todo', {
 });
 
 let newTodo = new Todo({
-    text: '       Edit this video           '
+    text: 'true'
 });
 
 let anotherTodo = new Todo({
