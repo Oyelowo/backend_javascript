@@ -13,10 +13,12 @@ let Todo = mongoose.model('Todo', {
         trim: true
     },
     completed: {
-        type: Boolean
+        type: Boolean,
+        default: false
     },
     completedAt: {
-        type: Number
+        type: Number,
+        default: null
     }
 });
 
@@ -31,7 +33,7 @@ let anotherTodo = new Todo({
 })
 
 newTodo.save().then((doc) => {
-    console.log('saved todo', JSON.stringify(doc,null, 2));
+    console.log('saved todo', JSON.stringify(doc, null, 2));
 }, (e) => {
     console.log('unable to save todo')
 });
