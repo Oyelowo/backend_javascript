@@ -23,7 +23,7 @@ let Todo = mongoose.model('Todo', {
 });
 
 let newTodo = new Todo({
-    text: 'true'
+    text: '       Edit this video           '
 });
 
 let anotherTodo = new Todo({
@@ -43,3 +43,19 @@ anotherTodo.save().then((doc) => {
 }, (e) => {
     console.log('unable to save todo')
 });
+
+
+let User = mongoose.model('User', {
+    email: {
+        required: true,
+        trim: true,
+        type: String,
+        minLength: 1
+    }
+});
+
+let newUser = new User({
+    email: 'oyelowooyedayo@gmail.com     '
+});
+
+newUser.save().then(res => console.log(res), err => console.log(err));
