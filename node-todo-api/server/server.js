@@ -27,9 +27,9 @@ let newTodo = new Todo({
 });
 
 let anotherTodo = new Todo({
-    // text: 'Read Blog',
-    // completed: true,
-    // completedAt: 123
+    text: 'Read Blog',
+    completed: true,
+    completedAt: 123
 })
 
 newTodo.save().then((doc) => {
