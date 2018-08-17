@@ -7,7 +7,10 @@ mongoose.connect('mongodb://localhost:27017/TodoApp');
 // save new something
 let Todo = mongoose.model('Todo', {
     text: {
-        type: String
+        type: String,
+        required: true,
+        minLength: 1,
+        trim: true
     },
     completed: {
         type: Boolean
@@ -18,13 +21,13 @@ let Todo = mongoose.model('Todo', {
 });
 
 let newTodo = new Todo({
-    text: 'Code Something'
+    text: '       Edit this video           '
 });
 
 let anotherTodo = new Todo({
-    text: 'Read Blog',
-    completed: true,
-    completedAt: 123
+    // text: 'Read Blog',
+    // completed: true,
+    // completedAt: 123
 })
 
 newTodo.save().then((doc) => {
