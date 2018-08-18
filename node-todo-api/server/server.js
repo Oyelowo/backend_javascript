@@ -55,7 +55,7 @@ let User = mongoose.model('User', {
 });
 
 let newUser = new User({
-    email: 'oyelowooyedayo@gmail.com     '
+    email: '    oyelowooyedayo@gmail.com     '
 });
 
 newUser.save().then(res => console.log('response', res), err => console.log(err));
