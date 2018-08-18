@@ -58,4 +58,4 @@ let newUser = new User({
     email: 'oyelowooyedayo@gmail.com     '
 });
 
-newUser.save().then(res => console.log(res), err => console.log(err));
+newUser.save().then(res => console.log('response', res), err => console.log(err));
