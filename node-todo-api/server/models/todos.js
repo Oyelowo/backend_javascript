@@ -38,3 +38,6 @@ anotherTodo.save().then((doc) => {
 }, (e) => {
     console.log('unable to save todo')
 });
+
+
+module.exports={Todo};
