@@ -15,3 +15,6 @@ let newUser = new User({
 });
 
 newUser.save().then(res => console.log('response', res), err => console.log(err));
+
+
+module.exports={User};
