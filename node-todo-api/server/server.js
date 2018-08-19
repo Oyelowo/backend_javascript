@@ -15,6 +15,8 @@ let {
 
 let app = express();
 
+app.use(bodyParser.json());
+
 app.post('/todo', (req, res)=>{
 
 });
