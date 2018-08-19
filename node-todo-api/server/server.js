@@ -2,6 +2,9 @@ let {
     mongoose
 } = require('./db/mongoose');
 
-// save new something
-
-
+let {
+    Todo
+} = require('./models/todos');
+let {
+    User
+} = require('./models/user');
