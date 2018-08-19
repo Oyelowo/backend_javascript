@@ -17,10 +17,11 @@ let app = express();
 
 app.use(bodyParser.json());
 
-app.post('/todo', (req, res)=>{
 
+app.post('/todos', (req, res) => {
+    // console.log(req.body);
 });
 
-app.listen(3000, ()=>{
+app.listen(3000, () => {
     console.log('start on port 3000');
 })
