@@ -1,4 +1,6 @@
-
+let {
+    mongoose
+} = require('./db/mongoose');
 // save new something
 let Todo = mongoose.model('Todo', {
     text: {
