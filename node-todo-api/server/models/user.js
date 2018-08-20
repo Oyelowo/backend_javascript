@@ -1,6 +1,4 @@
 let mongoose = require('mongoose');
-
-
     let User = mongoose.model('User', {
         email: {
             required: true,
@@ -10,11 +8,11 @@ let mongoose = require('mongoose');
         }
     });
 
-let newUser = new User({
-    email: '    oyelowooyedayo@gmail.com     '
-});
+// let newUser = new User({
+//     email: '    oyelowooyedayo@gmail.com     '
+// });
 
-newUser.save().then(res => console.log('response', res), err => console.log(err));
+// newUser.save().then(res => console.log('response', res), err => console.log(err));
 
 
 module.exports={User};
