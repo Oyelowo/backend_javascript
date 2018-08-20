@@ -1,4 +1,13 @@
 let mongoose = require('mongoose');
+
+// {
+//     email: 'oyelowooyedayo@gmail.com',
+//     password: 'jdfhdfkjrlksnrkasf',
+//     tokens: [{
+//         access: 'auth',
+//         token: 'jknlzfhjkljrjklhskjgshdjfoik'
+//     }]
+// }
     let User = mongoose.model('User', {
         email: {
             required: true,
