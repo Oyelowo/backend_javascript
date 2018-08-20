@@ -4,15 +4,15 @@ const {
 
 const {
     mongoose
-} = require('./../server/db/mongoose');
+} = require('../server/db/mongoose');
 
 const {
     Todo
-} = require('./../server/models/todos');
+} = require('../server/models/todos');
 
 const {
     User
-} = require('././../server/models/user');
+} = require('../server/models/user');
 
 
 
