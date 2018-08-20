@@ -5,9 +5,14 @@ const {
 const {
     mongoose
 } = require('./../server/db/mongoose');
+
 const {
     Todo
 } = require('./../server/models/todos');
+
+const {
+    User
+} = require('././../server/models/user');
 
 
 
@@ -36,3 +41,29 @@ const {
 //     }
 //     console.log('Todo By id', todo);
 // })
+
+
+let userID = '5b771919b401ac2af421c1fb';
+
+if(!ObjectID.isValid(userID)){
+    console.log('ID not found');
+}
+
+// User.find({
+//     _id: userID
+// }).then((users) => {
+//     console.log('Users', users)
+// });
+
+// User.findOne({
+//     _id: userID
+// }).then((user) => {
+//     console.log('User', user)
+// });
+
+User.findById(userID).then((user) => {
+    if (!user) {
+        return console.log('unable to find user')
+    }
+    console.log('User by id', JSON.stringify(user, null, 2))
+}).catch((e) => console.log(e))
