@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 
 
 app.post('/todos', (req, res) => {
-    let todo = new({
+    let todo = new Todo({
         text: req.body.text
     });
 

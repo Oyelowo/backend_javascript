@@ -1,0 +1,8 @@
+C:\Program Files\MongoDB\Server\4.0\bin
+
+//create mongo-data folder and:
+mongod.exe --dbpath C:\Users\oyeda\mongo-data
+
+on another cmd: 
+
+mongo.exe
