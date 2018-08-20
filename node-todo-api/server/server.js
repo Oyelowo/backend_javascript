@@ -1,6 +1,7 @@
-let express = require('express');
-let bodyParser = require('body-parser');
-let {
+const _ = require('lodash');
+const express = require('express');
+const bodyParser = require('body-parser');
+const {
     ObjectID
 } = require('mongodb');
 
@@ -60,7 +61,7 @@ app.get('/todos/:id', (req, res) => {
         res.send({
             todo
         })
-    }).catch(e => res.staus(400).send());
+    }).catch(e => res.status(400).send());
 });
 
 app.delete('/todos/:id', (req, res) => {
@@ -75,10 +76,42 @@ app.delete('/todos/:id', (req, res) => {
         if (!todo) {
             res.status(404).send();
         }
-        res.send({todo});
+        res.send({
+            todo
+        });
     }).catch(e => res.status(400).send());
 });
 
+app.patch('/todos/:id', (req, res) => {
+    let id = req.params.id;
+    // subset of what the user sends
+    let body = _.pick(req.body, ['text', 'completed']);
+
+    if (!ObjectID.isValid(id)) {
+        return res.status(404).send();
+    }
+
+    if (_.isBoolean(body.completed) && body.completed) {
+        body.completedAt = new Date().getTime();
+    } else {
+        body.completed = false;
+        body.completedAt = null;
+    }
+
+    Todo.findByIdAndUpdate(id, {
+        $set: body
+    }, {
+        new: true //similar to returnOriginal in mongodb
+    }).then((todo) => {
+        if (!todo) {
+            return res.status(404).send();
+        }
+        res.send({
+            todo
+        })
+    }).catch(e => res.status(400).send())
+
+});
 
 app.listen(port, () => {
     console.log('start at port ' + port);
