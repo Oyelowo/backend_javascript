@@ -16,12 +16,12 @@ const todos = [{
 }]
 
 // runs before every test case
-beforeEach((done) => {
-    // delete every todo
-    Todo.remove({}).then(() => {
-        return Todo.insertMany(todos);
-    }).then(() => done());
-});
+// beforeEach((done) => {
+//     // delete every todo
+//     Todo.remove({}).then(() => {
+//         return Todo.insertMany(todos);
+//     }).then(() => done());
+// });
 
 
 describe('POST/todos', () => {
