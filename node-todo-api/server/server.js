@@ -17,6 +17,7 @@ let {
 
 
 let app = express();
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
@@ -56,12 +57,14 @@ app.get('/todos/:id', (req, res) => {
             return res.status(404).send()
         }
 
-        res.send({todo})
+        res.send({
+            todo
+        })
     }).catch(e => res.staus(400).send());
 })
 
-app.listen(3000, () => {
-    console.log('start on port 3000');
+app.listen(port, () => {
+    console.log('start at port ' + port);
 });
 
 
