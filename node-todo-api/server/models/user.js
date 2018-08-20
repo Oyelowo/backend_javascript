@@ -13,7 +13,14 @@ let mongoose = require('mongoose');
             required: true,
             trim: true,
             type: String,
-            minLength: 1
+            minLength: 1,
+            unique: true,
+            validate:{
+                validator: (value)=>{
+
+                }, 
+                message: '{VALUE} email is not valid'
+            }
         }
     });
 
