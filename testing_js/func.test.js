@@ -1,7 +1,9 @@
 const {
     hello,
     reverseString,
-    addAll
+    addAll,
+    fetchData,
+    fizzbuzz
 } = require('./func');
 
 
@@ -29,5 +31,24 @@ describe('Add', () => {
       expect(addAll(1,2,3,4,5,5)).not.toBeFalsy();
       expect(addAll(1,2,3,4,5,5)).not.toBeNull();
       expect(typeof addAll(1,2,3,4,5,5)).toBe('number');
+  });
+});
+
+
+describe('GET /https://jsonplaceholder.typicode.com/posts', () => {
+    it('should GET posts', (done)=>{
+        expect(fetchData('https://jsonplaceholder.typicode.com/posts')).not.toBeNull();
+        expect(typeof fetchData('https://jsonplaceholder.typicode.com/posts')).toBe('object');
+        done();
+    });
+  
+})
+
+describe('FIZZBUZZ', () => {
+  it('should print Fizz when divisible by 3', () => {
+      expect(fizzbuzz()).toContain('Fizz')
   })
 })
+
+
+
