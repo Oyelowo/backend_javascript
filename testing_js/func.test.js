@@ -45,8 +45,8 @@ describe('GET /https://jsonplaceholder.typicode.com/posts', () => {
 })
 
 describe('FIZZBUZZ', () => {
-  it('should print Fizz when divisible by 3', () => {
-      expect(fizzbuzz()).toContain('Fizz')
+  it('should be called 100 times', () => {
+      expect(fizzbuzz()).toHaveBeenCalledTimes(100)
   })
 })
 
