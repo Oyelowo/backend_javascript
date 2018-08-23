@@ -9,10 +9,10 @@ const getData = (id, title, data) => {
     // let data = JSON.stringify(dataset);
     return data.filter(el => el.id == id && el.title === title);
 }
-// console.log(getData('6', 'dolorem eum magni eos aperiam quia', data));
+console.log(getData('6', 'dolorem eum magni eos aperiam quia', data));
 
 
-// console.log(new Date('2018-08-22').toDateString());
+console.log(new Date('2018-08-22').toDateString());
 
 
 const getForecast = (day, productCode, outletCode, alpha, dataset) => {
@@ -27,5 +27,4 @@ const getForecast = (day, productCode, outletCode, alpha, dataset) => {
 
     let forecast = exponential_smoothing(prevWeekSales, prevWeekForcast);
     return forecast;
-
 }
