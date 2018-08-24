@@ -6,7 +6,6 @@ const exponentialSmoothing = (prevWeekSales, prevWeekForcast, alpha) => {
 }
 
 const getData = (id, title, data) => {
-    let data = JSON.stringify(dataset);
     return data.filter(el => el.id == id && el.title === title);
 }
 console.log(getData('6', 'dolorem eum magni eos aperiam quia', data));
