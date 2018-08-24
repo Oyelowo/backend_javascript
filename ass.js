@@ -6,7 +6,7 @@ const exponentialSmoothing = (prevWeekSales, prevWeekForcast, alpha) => {
 }
 
 const getData = (id, title, data) => {
-    // let data = JSON.stringify(dataset);
+    let data = JSON.stringify(dataset);
     return data.filter(el => el.id == id && el.title === title);
 }
 console.log(getData('6', 'dolorem eum magni eos aperiam quia', data));
@@ -20,6 +20,7 @@ const getForecast = (day, productCode, outletCode, alpha, dataset) => {
         el.day === day && el.productCode === productCode && el.outletCode === outletCode
     });
 
+
     let {
         sales: prevWeekSales,
         forecast: prevWeekForcast
@@ -28,3 +29,5 @@ const getForecast = (day, productCode, outletCode, alpha, dataset) => {
     let forecast = exponential_smoothing(prevWeekSales, prevWeekForcast);
     return forecast;
 }
+
+
