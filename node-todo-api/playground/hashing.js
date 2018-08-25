@@ -3,8 +3,15 @@ const {
 } = require('crypto-js');
 const jwt = require('jsonwebtoken');
 
-jwt.sign
-jwt.verify
+let data = {
+    id: 10
+};
+
+let token = jwt.sign(data, '123abc');
+console.log('token', token);
+
+let decoded = jwt.verify(token, '123abc');
+console.log('decoded', decoded);
 
 // let message = 'This is Oyelowo';
 // let hash = SHA256(message).toString();
