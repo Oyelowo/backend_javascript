@@ -43,7 +43,13 @@ let UserSchema = new mongoose.Schema({
 UserSchema.methods.generateAuthToken = function () {
     let user = this;
     let access = 'auth';
-    let token
+    let token = jwt.sign({_id: user._id.toHexString(), access}, 'abc123').toString();
+
+    user.tokens = user.tokens.concat([{access, token}]);
+
+   return user.save().then(()=>{
+        return token;
+    });
 }
 
 let User = mongoose.model('User', UserSchema);
