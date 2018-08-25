@@ -9,7 +9,8 @@ const validator = require('validator');
 //         token: 'jknlzfhjkljrjklhskjgshdjfoik'
 //     }]
 // }
-let User = mongoose.model('User', {
+
+let UserSchema = new mongoose.Schema({
     email: {
         required: true,
         trim: true,
@@ -37,6 +38,8 @@ let User = mongoose.model('User', {
         }
     }]
 });
+
+let User = mongoose.model('User', UserSchema);
 
 // let newUser = new User({
 //     email: '    oyelowooyedayo@gmail.com     '
