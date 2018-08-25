@@ -14,7 +14,7 @@ let User = mongoose.model('User', {
         required: true,
         trim: true,
         type: String,
-        minLength: 1,
+        minlength: 1,
         unique: true,
         validate: {
             validator: validator.isEmail,
@@ -24,7 +24,7 @@ let User = mongoose.model('User', {
     password: {
         type: String,
         required: true,
-        minLength: 6
+        minlength: 6
     },
     tokens: [{
         access: {
