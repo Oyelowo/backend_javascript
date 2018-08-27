@@ -5,7 +5,7 @@ const exponentialSmoothing = (prevWeekSales, prevWeekForcast, alpha) => {
     return (alpha * prevWeekSales + (1 - alpha) * prevWeekForcast)
 }
 
-let getPrevWeekDay = (day) => {
+let getDateOfPrevWeekDay = (day) => {
     day = day.toLowerCase();
     let weekDays = ["sunday", "saturday", "friday", "thursday", "wednesday", "tuesday", "monday"];
     if (!weekDays.includes(day)) {
@@ -28,12 +28,15 @@ const getForecast = (day, productCode, outletCode, alpha) => {
     // filter the data by given day and product code
     let filteredProductArray = outletData.filter(el => {
         // get Day from date values which can be compared with the day in the parameters
-        let elDay = (el.date).getDay();
-        return (elDay === day && el.productCode === productCode);
+        let dateOfPrevWeekDay = getDateOfPrevWeekDay(day);
+        return (el.date === dateOfPrevWeekDay && el.productCode === productCode);
     });
 
     // Deconstructure previous week's sales and forecast from the filteredArray
-    const {sales: prevWeekSales, forecast: prevWeekForcast} = filteredProductArray;
+    const {
+        sales: prevWeekSales,
+        forecast: prevWeekForcast
+    } = filteredProductArray;
 
     let forecast = exponentialSmoothing(prevWeekSales, prevWeekForcast, alpha);
     return forecast;
