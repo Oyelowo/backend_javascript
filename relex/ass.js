@@ -5,6 +5,22 @@ const exponentialSmoothing = (prevWeekSales, prevWeekForcast, alpha) => {
     return (alpha * prevWeekSales + (1 - alpha) * prevWeekForcast)
 }
 
+let getPrevWeekDay = (day) => {
+    day = day.toLowerCase();
+    let weekDays = ["sunday", "saturday", "friday", "thursday", "wednesday", "tuesday", "monday"];
+    if (!weekDays.includes(day)) {
+        throw Error('Date is incorrect. Check your spelling');
+    }
+    let date = new Date();
+    let todayNumber = date.getDay();
+    let lastDayOfLastWeek = date.getDate() - todayNumber;
+    date.setDate(lastDayOfLastWeek);
+    let sameDayPreviousWeek = date.getDate() - weekDays.indexOf(day);
+    date.setDate(sameDayPreviousWeek);
+    return date.toLocaleDateString()
+}
+
+
 const getForecast = (day, productCode, outletCode, alpha) => {
     // Get data(which is an array of objects) from each outlet
     let outletData = Db.get(outletCode);

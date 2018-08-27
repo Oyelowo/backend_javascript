@@ -1,17 +1,19 @@
 let getPrevWeekDay = (day) => {
     day = day.toLowerCase();
-    let date = new Date();
-    let dayOfWeek = date.getDay();
-    date.setDate(date.getDate() - dayOfWeek);
-    // console.log('let', date); 
-    // console.log('date', date.toLocaleDateString(), '\n', date.toString());
     let weekDays = ["sunday", "saturday", "friday", "thursday", "wednesday", "tuesday", "monday"];
-    if (weekDays.includes(day)) {
-        date.setDate(date.getDate() - weekDays.indexOf(day));
-    } else {
+    if (!weekDays.includes(day)) {
         throw Error('Date is incorrect. Check your spelling');
     }
+    let date = new Date();
+    let todayNumber = date.getDay();
+    let lastDayOfLastWeek = date.getDate() - todayNumber;
+    date.setDate(lastDayOfLastWeek);
+    // console.log('let', date); 
+    // console.log('date', date.toLocaleDateString(), '\n', date.toString());
+    let sameDayPreviousWeek = date.getDate() - weekDays.indexOf(day);
+    date.setDate(sameDayPreviousWeek);
     return date.toLocaleDateString()
+
 }
 
-console.log('getPrevWeekDay', getPrevWeekDay('thUrsday'));
+console.log('getPrevWeekDay', getPrevWeekDay('sunday'));
