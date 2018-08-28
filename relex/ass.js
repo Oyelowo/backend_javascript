@@ -24,7 +24,7 @@ let getDateOfPrevWeekDay = (day) => {
 
 const getForecast = (day, productCode, outletCode, alpha) => {
     // Get data(which is an array of objects) from each outlet
-    let outletData = Db.get(outletCode);
+    let outletData = Db.getOutlet(outletCode);
 
     // filter the data by given day and product code
     let filteredProductArray = outletData.filter(el => {
