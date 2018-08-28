@@ -26,7 +26,7 @@ const getDateOfPrevWeekDay = (day) => {
     // This assumes that the week starts on Monday and ends on Sunday(0 to 6)
     let sundayPreviousWeek = date.getDate() - todayNumber;
     date.setDate(sundayPreviousWeek);
-    // subtracting the index of anyday from the previous week's sunday date will now
+    // subtracting the index(0 to 6) of anyday from the previous week's sunday date will now
     // give the date of the same day in the previous week
     let sameDayPreviousWeek = date.getDate() - weekDays.indexOf(day);
     date.setDate(sameDayPreviousWeek);
@@ -34,7 +34,7 @@ const getDateOfPrevWeekDay = (day) => {
 }
 
 const getForecast = (day, productCode, outletCode, alpha) => {
-    // Get data(which is an array of objects) from each outlet
+    // Get data(which is an array of objects) from an outlet
     let outletData = Db.getOutlet(outletCode);
 
     // filter the data by given day and product code
