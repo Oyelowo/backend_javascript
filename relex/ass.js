@@ -1,11 +1,8 @@
-const fs = require('fs');
-let data = require('./posts.json');
-
 const exponentialSmoothing = (prevWeekSales, prevWeekForcast, alpha) => {
     return (alpha * prevWeekSales + (1 - alpha) * prevWeekForcast)
 }
 
-let getDateOfPrevWeekDay = (day) => {
+const getDateOfPrevWeekDay = (day) => {
     day = day.toLowerCase();
     let weekDays = ["sunday", "saturday", "friday", "thursday", "wednesday", "tuesday", "monday"];
     if (!weekDays.includes(day)) {
