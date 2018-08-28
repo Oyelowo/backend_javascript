@@ -12,8 +12,8 @@ let getPrevWeekDay = (day) => {
     // console.log('date', date.toLocaleDateString(), '\n', date.toString());
     let sameDayPreviousWeek = date.getDate() - weekDays.indexOf(day);
     date.setDate(sameDayPreviousWeek);
-    return date.toLocaleDateString()
+    return date.toDateString()
 
 }
 
-console.log('getPrevWeekDay', getPrevWeekDay('sunday'));
+console.log('getPrevWeekDay', getPrevWeekDay('friday'));
