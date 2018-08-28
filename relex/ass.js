@@ -13,8 +13,9 @@ let getDateOfPrevWeekDay = (day) => {
     }
     let date = new Date();
     let todayNumber = date.getDay();
-    let lastDayOfLastWeek = date.getDate() - todayNumber;
-    date.setDate(lastDayOfLastWeek);
+    // This assumes that the week starts on Monday and ends on Sunday
+    let lastDayOfPrevWeek = date.getDate() - todayNumber;
+    date.setDate(lastDayOfPrevWeek);
     let sameDayPreviousWeek = date.getDate() - weekDays.indexOf(day);
     date.setDate(sameDayPreviousWeek);
     return date.toLocaleDateString()
@@ -36,7 +37,7 @@ const getForecast = (day, productCode, outletCode, alpha) => {
     const {
         sales: prevWeekSales,
         forecast: prevWeekForcast
-    } = filteredProductArray;
+    } = filteredProductArray[0];
 
     let forecast = exponentialSmoothing(prevWeekSales, prevWeekForcast, alpha);
     return forecast;
