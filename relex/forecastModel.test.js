@@ -1,7 +1,7 @@
 let {
     exponentialSmoothing,
     getDateOfDayInPrevWeek
-} = require('./ass');
+} = require('./forecastModel');
 
 
 describe('Exponential Smoothing', () => {
