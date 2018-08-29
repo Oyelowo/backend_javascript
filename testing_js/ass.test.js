@@ -1,7 +1,6 @@
 let {
     exponentialSmoothing,
-    getDateOfPrevWeekDay,
-    getForecast
+    getDateOfDayInPrevWeek
 } = require('./ass');
 
 
@@ -32,12 +31,12 @@ describe('Exponential Smoothing', () => {
 });
 
 
-describe('getDateOfPrevWeekDay', () => {
+describe('getDateOfDayInPrevWeek', () => {
     it('should return a string', () => {
-        expect(typeof getDateOfPrevWeekDay('sunday')).toBe('string');
+        expect(typeof getDateOfDayInPrevWeek('sunday')).toBe('string');
     });
 
-    it('should throw an error if argument is not a week day', () => {
-        expect(() => getDateOfPrevWeekDay('ssday')).toThrow();
+    it('should throw an error if parameter is not a correct week day', () => {
+        expect(() => getDateOfDayInPrevWeek('ssday')).toThrow();
     });
 });

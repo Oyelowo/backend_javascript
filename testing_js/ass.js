@@ -5,12 +5,13 @@ const exponentialSmoothing = (prevWeekSales, prevWeekForcast, alpha) => {
     return (alpha * prevWeekSales + (1 - alpha) * prevWeekForcast)
 }
 
-// This function gets the date of a day in the previous week
-const getDateOfPrevWeekDay = (day) => {
+// This function gets the date of a particular day in the previous week
+const getDateOfDayInPrevWeek = (day) => {
     day = day.toLowerCase();
     // The weekdays are created in reverse for their indexes to be used later.
     // because previous sunday is the closest to a new week while previous Monday is
-    // farthest from the new week
+    // furthest from the new week.
+    // This assumes that the week starts on Monday and ends on Sunday(0 to 6)
     let weekDays = ["sunday", "saturday", "friday", "thursday", "wednesday", "tuesday","monday"];
     if (!weekDays.includes(day)) {
         throw Error('Date is incorrect. Check your spelling');
@@ -19,7 +20,6 @@ const getDateOfPrevWeekDay = (day) => {
     let date = new Date();
     let todayNumber = date.getDay();
 
-    // This assumes that the week starts on Monday and ends on Sunday(0 to 6)
     let sundayPreviousWeek = date.getDate() - todayNumber;
     date.setDate(sundayPreviousWeek);
     // subtracting the index(0 to 6) of anyday from the previous week's sunday date will now
@@ -38,8 +38,8 @@ const getForecast = (day, productCode, outletCode, alpha) => {
     let filteredProductArray = outletData.filter(el => {
         // get the date of the required day in the previous week and later compare with
         // the date in the database
-        let dateOfPrevWeekDay = getDateOfPrevWeekDay(day);
-        return (el.date === dateOfPrevWeekDay && el.productCode === productCode);
+        let dateOfDayInPrevWeek = getDateOfDayInPrevWeek(day);
+        return (el.date === dateOfDayInPrevWeek && el.productCode === productCode);
     });
 
     // Deconstructure previous week's sales and forecast from the filteredArray
@@ -52,6 +52,5 @@ const getForecast = (day, productCode, outletCode, alpha) => {
 
 module.exports={
     exponentialSmoothing,
-    getDateOfPrevWeekDay,
-    getForecast
+    getDateOfDayInPrevWeek
 }
