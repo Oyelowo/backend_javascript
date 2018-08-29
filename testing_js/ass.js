@@ -1,4 +1,7 @@
 const exponentialSmoothing = (prevWeekSales, prevWeekForcast, alpha) => {
+    if(alpha>1 || alpha<0){
+        throw Error('alpha should be within 0 and 1');
+    }
     return (alpha * prevWeekSales + (1 - alpha) * prevWeekForcast)
 }
 
