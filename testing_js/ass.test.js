@@ -32,7 +32,7 @@ describe('Exponential Smoothing', () => {
 });
 
 
-// describe('getDateOfPrevWeekDay', () => {
+describe('getDateOfPrevWeekDay', () => {
     it('should return a string', () => {
         expect(typeof getDateOfPrevWeekDay('sunday')).toBe('string');
     });
