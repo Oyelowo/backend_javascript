@@ -4,7 +4,7 @@ const {
 
 const {
     Todo
-} = require('../../models/todo');
+} = require('./../../models/todos');
 const {
     User
 } = require('./../../models/user.js');
