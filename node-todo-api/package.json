@@ -11,7 +11,7 @@
   "engines": {
     "node": "10.8.0"
   },
-  "author": "",
+  "author": "Oyelowo Oyedayo",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
