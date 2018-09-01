@@ -3,7 +3,6 @@ const validator = require('validator');
 const jwt = require('jsonwebtoken');
 const _= require('lodash');
 
-
 // {
 //     email: 'oyelowooyedayo@gmail.com',
 //     password: 'jdfhdfkjrlksnrkasf',
