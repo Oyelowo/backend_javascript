@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 const jwt = require('jsonwebtoken');
-const _= require('lodash');
+const _ = require('lodash');
 
 // {
 //     email: 'oyelowooyedayo@gmail.com',
@@ -42,22 +42,49 @@ let UserSchema = new mongoose.Schema({
 });
 
 UserSchema.methods.toJSON = function () {
-    let user=this;
-    let userObject=user.toObject();
-    return _.pick(userObject, ['_id','email']);
+    let user = this;
+    let userObject = user.toObject();
+    return _.pick(userObject, ['_id', 'email']);
 }
 
 UserSchema.methods.generateAuthToken = function () {
     let user = this;
     let access = 'auth';
-    let token = jwt.sign({_id: user._id.toHexString(), access}, 'abc123').toString();
+    let token = jwt.sign({
+        _id: user._id.toHexString(),
+        access
+    }, 'abc123').toString();
 
-    user.tokens = user.tokens.concat([{access, token}]);
+    user.tokens = user.tokens.concat([{
+        access,
+        token
+    }]);
 
-   return user.save().then(()=>{
+    return user.save().then(() => {
         return token;
     });
-}
+};
+
+UserSchema.statics.findByToken = function (token) {
+    let User = this;
+    let decoded;
+
+    try {
+        decoded = jwt.verify(token, 'abc123');
+    } catch (e) {
+        // return new Promise((resolve, reject)=>{
+        //     reject()     
+        // })
+        // same as above but simpler
+        return Promise.reject()
+    }
+    return User.findOne({
+        '_id': decoded._id,
+        'tokens.token': token,
+        'tokens.access': 'auth'
+
+    });
+};
 
 let User = mongoose.model('User', UserSchema);
 
