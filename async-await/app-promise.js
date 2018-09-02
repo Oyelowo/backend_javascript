@@ -58,13 +58,13 @@ const getStatus = (userId) => {
         if (grades.length > 0) {
             average = grades.map(grade => grade.grade).reduce((a, b) => a + b) / grades.length;
         }
-        console.log(average);
+        return `${user.name} has a ${average}% in the class.`;
     });
 }
 
-// getStatus(1).then(status => console.log(status)).catch(e => console.log(e));
+getStatus(2).then(status => console.log(status)).catch(e => console.log(e));
 
-getUser(1).then(user => console.log(user)).catch(e => console.log(e));
+// getUser(1).then(user => console.log(user)).catch(e => console.log(e));
 
 // getGrades(9101).then(grades => console.log('grades', grades))
 //     .catch(e => console.log('e', e))
