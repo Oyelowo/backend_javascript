@@ -95,7 +95,7 @@ app.delete('/todos/:id', authenticate, (req, res) => {
     }).catch(e => res.status(400).send());
 });
 
-app.patch('/todos/:id', (req, res) => {
+app.patch('/todos/:id', authenticate, (req, res) => {
     let id = req.params.id;
     // subset of what the user sends
     let body = _.pick(req.body, ['text', 'completed']);
@@ -111,7 +111,10 @@ app.patch('/todos/:id', (req, res) => {
         body.completedAt = null;
     }
 
-    Todo.findByIdAndUpdate(id, {
+    Todo.findOneAndUpdate({
+        _id: id,
+        _creator: req.user._id
+    }, {
         $set: body
     }, {
         new: true //similar to returnOriginal in mongodb
