@@ -53,14 +53,17 @@ app.get('/todos', authenticate, (req, res) => {
     });
 });
 
-app.get('/todos/:id', (req, res) => {
+app.get('/todos/:id', authenticate, (req, res) => {
     let id = req.params.id;
 
     if (!ObjectID.isValid(id)) {
         res.status(404).send()
     }
 
-    Todo.findById(id).then((todo) => {
+    Todo.findOne({
+        _id: id,
+        _creator: req.user._id
+    }).then((todo) => {
         if (!todo) {
             return res.status(404).send()
         }
@@ -71,7 +74,7 @@ app.get('/todos/:id', (req, res) => {
     }).catch(e => res.status(400).send());
 });
 
-app.delete('/todos/:id', (req, res) => {
+app.delete('/todos/:id', authenticate, (req, res) => {
     // get the id
     let id = req.params.id;
 
@@ -79,7 +82,10 @@ app.delete('/todos/:id', (req, res) => {
         return console.log('ID is invalid!');
     }
 
-    Todo.findByIdAndRemove(id).then((todo) => {
+    Todo.findOneAndRemove({
+        _id: id,
+        _creator: req.user._id
+    }).then((todo) => {
         if (!todo) {
             res.status(404).send();
         }
