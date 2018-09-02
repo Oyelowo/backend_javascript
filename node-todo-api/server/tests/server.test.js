@@ -310,7 +310,7 @@ describe('POST /users/login', () => {
             email: users[1].email,
             password: users[1].passoword + 'anything'
         })
-        .expect(200)
+        .expect(400)
         .expect((res) => {
             expect(res.headers['x-auth']).toNotExist();
         })
