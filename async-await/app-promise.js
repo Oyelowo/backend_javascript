@@ -67,4 +67,5 @@ getStatus(2)
 
 // getUser(1).then(user => console.log(user)).catch(e => console.log(e));
 // getGrades(9101).then(grades => console.log('grades', grades))     .catch(e =>
-// console.log('e', e))
+// console.log('e', e)
+var window=window;
