@@ -48,6 +48,24 @@ const convertCurrency = async(from, to, amount) => {
 // countries); });
 
 convertCurrency('USD', 'EUR', 20).then((message) => {
-    console.log( message);
+    // console.log(message);
+}).catch((e) => {
+    console.log(e.message);
+});
 
+const add = async(a, b) => a + b+c;
+
+const doWork = async() => {
+    try {
+        const result = await add(73, 2);
+        return result;
+    } catch (error) {
+        return 10;
+    }
+};
+
+doWork().then((data) => {
+    console.log(data);
+}).catch((e) => {
+    console.log('something went wrong');
 });
