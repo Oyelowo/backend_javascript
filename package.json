@@ -1,0 +1,22 @@
+{
+  "name": "backend_javascript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Oyelowo/backend_javascript.git"
+  },
+  "author": "Oyelowo Oyedayo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Oyelowo/backend_javascript/issues"
+  },
+  "homepage": "https://github.com/Oyelowo/backend_javascript#readme"
+}
