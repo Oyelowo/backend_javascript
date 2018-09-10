@@ -10,10 +10,17 @@ const axios = require('axios');
 // response.data.rates[to];             return rate         }); };
 
 const getExchangeRate = async(from, to) => {
-    const response = await axios.get('http://data.fixer.io/api/latest?access_key=c3e176fdba5077c6210a13a2e5759db6');
-    const euro = 1 / response.data.rates[from];
-    const rate = euro * response.data.rates[to];
-    return rate;
+    try {
+        const response = await axios.get('http://data.fixer.io/api/latest?access_key=c3e176fdba5077c6210a13a2e5759db6');
+        const euro = 1 / response.data.rates[from];
+        const rate = euro * response.data.rates[to];
+        return rate;
+        if (isNaN(rate)) {
+            throw new Error();
+        }
+    } catch (error) {
+        throw new Error(`Unable to get exchange rate ${from} and ${to}`);
+    }
 };
 
 // const getCountries = (currencyCode) => {     return axios
@@ -22,10 +29,14 @@ const getExchangeRate = async(from, to) => {
 // .map((country) => country.name);         }); };
 
 const getCountries = async(currencyCode) => {
-    const response = await axios.get(`https://restcountries.eu/rest/v2/currency/${currencyCode}`)
+    try {
+        const response = await axios.get(`https://restcountries.eu/rest/v2/currency/${currencyCode}`)
     return response
         .data
         .map(country => country.name);
+    } catch (error) {
+        throw new Error(`Unable to get countries that use ${currencyCode}.`)
+    }
 };
 
 // const convertCurrency = (from, to, amount) => {     let convertedAmount;
@@ -47,25 +58,8 @@ const convertCurrency = async(from, to, amount) => {
 // }); getCountries('EUR').then((countries) => {     console.log('countries',
 // countries); });
 
-convertCurrency('USD', 'EUR', 20).then((message) => {
-    // console.log(message);
+convertCurrency('USD', 'Eaera', 20).then((message) => {
+    console.log(message);
 }).catch((e) => {
     console.log(e.message);
-});
-
-const add = async(a, b) => a + b+c;
-
-const doWork = async() => {
-    try {
-        const result = await add(73, 2);
-        return result;
-    } catch (error) {
-        return 10;
-    }
-};
-
-doWork().then((data) => {
-    console.log(data);
-}).catch((e) => {
-    console.log('something went wrong');
 });
